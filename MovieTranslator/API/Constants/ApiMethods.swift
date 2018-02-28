@@ -10,12 +10,14 @@ import Foundation
 
 public enum ApiMethod : String {
     //get movies
-    case movies = "/discover/movie"
+    case movies = "/movie/popular"
     //get movie primary info by movie_id
     case movieInfo = "/movie/%i"
     //get movies by specific genre using genre id
     case genre = "/genre/%@/movies"
-    
+    //search the movie by title
+    case search = "/search/movie"
+    //get genres list
     case genreList = "/genre/movie/list"
     
 }

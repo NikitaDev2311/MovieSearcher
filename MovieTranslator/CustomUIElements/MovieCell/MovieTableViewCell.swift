@@ -25,17 +25,19 @@ class MovieTableViewCell : UITableViewCell {
     
     func load(withMovie movie: MovieModel?) {
         guard let movie = movie else { return }
-        if movie.genres?.count == 0 {
-        MovieModel.setGenres(genres: MoviesViewController.genres, forMovie: movie)
+        DispatchQueue.main.async {
+            if (movie.genres?.count)! < 1 {
+            MovieModel.setGenres(genres: MoviesViewController.genres, forMovie: movie)
+            }
+            MovieModel.setGenre(ofMovie: movie, toLabel: self.genreNameLabel)
         }
-        self.movieNameLabel.text = movie.title
-        //set genre name to the label
-        MovieModel.setGenre(ofMovie: movie, toLabel: self.genreNameLabel)
-        self.coverImageView.image = UIImageView.loadImageFromURLString(movie.imageUrl!)
-        self.yearOfReleaseLabel.text = String(format: "\(String(describing: movie.releaseDateString!)), ") 
-        
-        
-        
+        self.movieNameLabel.text = movie.title ?? "No title"
+        self.coverImageView.setImage(withImageURL: movie.imageUrl)
+        self.yearOfReleaseLabel.text = "No date"
+        if let releaseDateString = movie.releaseDateString {
+            movie.releaseDateString = MovieModel.getPrefixBeforeCharacter(character: "-", fromString: releaseDateString)
+            self.yearOfReleaseLabel.text = String(format: "\(movie.releaseDateString ?? ""), ")
+        }
     }
     
     override func prepareForReuse() {
@@ -49,7 +51,7 @@ class MovieTableViewCell : UITableViewCell {
     func initialSetup() {
         self.coverImageView?.layer.masksToBounds = true
         self.coverImageView?.layer.cornerRadius = 5
-        self.coverImageView?.contentMode = .scaleAspectFit
+        self.coverImageView?.contentMode = .scaleAspectFill
         self.movieNameLabel.textAlignment = .center
         self.generalView.clipsToBounds = true
         self.generalView.layer.cornerRadius = 5

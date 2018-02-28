@@ -16,7 +16,7 @@ class MovieService {
     
     func getMovies(page: Int, completion:@escaping arrayBlock) {
         
-        let parameters = ["api_key" : apiKey]
+        let parameters = ["api_key" : apiKey, "page" : page] as [String : Any]
         
         _ = APIManager.shared.get(methodName: ApiMethod.movies.rawValue, parameters: parameters, completion: { (response, error) in
             if let error = error {
@@ -29,8 +29,24 @@ class MovieService {
         })
     }
     
-    func getMoviePrimaryInfo(byMovieID id: Int, completion:@escaping objectBlock) {
-        let parameters = ["api_key" : apiKey]
+    func searchMovies(query: String,page: Int, completion:@escaping arrayBlock) {
+        let parameters = ["query" : query, "api_key" : apiKey, "page" : page] as [String : Any]
+        
+        _ = APIManager.shared.get(methodName: ApiMethod.search.rawValue, parameters: parameters, completion: { (response, error) in
+            
+            if let error = error {
+                completion(nil, error)
+            }
+            
+            guard let dataArray = ResponseParser.parseToDataArray(response) else { completion(nil, ParsingError.parseError.rawValue); return }
+            guard let searchMovies = Mapper<MovieModel>().mapArray(JSONArray: dataArray) as [MovieModel]? else { completion(nil, ParsingError.getDataError.rawValue) }
+            
+            completion(searchMovies, nil)
+        })
+    }
+    
+    func getMoviePrimaryInfo(byMovieID id: Int, appendToResponse: String, completion:@escaping objectBlock) {
+        let parameters = ["api_key" : apiKey, "append_to_response" : appendToResponse]
         
         _ = APIManager.shared.get(methodName: String(format:ApiMethod.movieInfo.rawValue, id) , parameters: parameters, completion: { (response, error) in
             if let error = error {

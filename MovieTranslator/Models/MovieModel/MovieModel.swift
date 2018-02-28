@@ -42,13 +42,13 @@ class MovieModel : BaseModel {
         self.description            <- map["overview"]
         self.originalLanguage       <- map["original_language"]
         
-//        self.movieInfo = 
         //init image url
         guard let imagePosterPath = self.imagePosterPath else { return }
         self.imageUrl = imageUrlPrefix + imagePosterPath
-        //get substring format "YYYY" from Date string format "YYYY-MM-dd"
-        guard let releaseDateString = self.releaseDateString else { return }
-        self.releaseDateString = releaseDateString.substring(to: releaseDateString.characters.index(of: "-")!)
+        
+        //guard let releaseDateString = self.releaseDateString else { return }
+        
+//        self.releaseDateString = releaseDateString.substring(to: releaseDateString.characters.index(of: "-")!)
         
     }
 }
@@ -58,6 +58,7 @@ class MovieInfo : BaseModel {
     var productionCountries : [[String : String]]?
     var productionCountryName : String?
     var duration : Int?
+    var videosDictionariesArray : [String : Any]?
     
     public required init?(map: Map) {
         super.init(map: map)
@@ -68,6 +69,7 @@ class MovieInfo : BaseModel {
         
         self.productionCountries          <- map["production_countries"]
         self.duration                     <- map["runtime"]
+        self.videosDictionariesArray      <- map["videos"]
         
         guard let productionCountries = self.productionCountries else { return }
         if productionCountries.count > 0 {

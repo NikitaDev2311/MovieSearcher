@@ -9,34 +9,47 @@
 import Foundation
 import UIKit
 import Alamofire
+import SVProgressHUD
+import SDWebImage
+
+extension UIViewController {
+    func showLoading() {
+        SVProgressHUD.setBackgroundColor(UIColor.black)
+        SVProgressHUD.setForegroundColor(UIColor.white)
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.gradient)
+        SVProgressHUD.setRingThickness(5.0)
+        SVProgressHUD.show()
+    }
+    
+    @objc func hideLoading() {
+        SVProgressHUD.dismiss()
+    }
+    
+    func showAlert(withMessage message: String) {
+        
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(action)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+}
 
 extension UIImageView {
     
-   static func loadImageFromURLString(_ urlString: String) -> UIImage? {
-        if let url = URL(string: urlString) {
-            let request = NSMutableURLRequest(url: url)
-            request.timeoutInterval = 30.0
-            var response: URLResponse?
-            let error: NSErrorPointer? = nil
-            var data: Data?
-            do {
-                data = try NSURLConnection.sendSynchronousRequest(request as URLRequest, returning: &response)
-            } catch let error1 as NSError {
-                error??.pointee = error1
-                data = nil
-            }
-            if (data != nil) {
-                return UIImage(data: data!)
-            }
+    func setImage(withImageURL imageURL : String?) {
+        if let imageUrl = imageURL {
+            self.sd_setImage(with: URL(string: imageUrl) , placeholderImage: #imageLiteral(resourceName: "noimage"), options: .continueInBackground, completed: nil)
         }
-        return nil
     }
+    
 }
 
 extension MovieModel {
     static func setGenre(ofMovie movie: MovieModel, toLabel label: UILabel) {
         guard let movieGenres = movie.genres else { return }
-        label.text = (movieGenres as NSArray).componentsJoined(by: ",")
+        let genreString = (movieGenres as NSArray).componentsJoined(by: ",")
+        label.text = genreString.count < 1 ?  "No genre" : genreString
     }
     
     static func setGenres(genres: [GenreModel], forMovie movie: MovieModel) {
@@ -54,17 +67,25 @@ extension MovieModel {
         let countMinutesInHour = 60
         let hoursCount = duration/countMinutesInHour
         let minutesCount = duration - hoursCount*countMinutesInHour
-        if duration > countMinutesInHour {
-            if hoursCount < 2 {
-                durationString = String(format:"\(hoursCount) hour \(minutesCount) min")
-            }
-            else {
-                durationString = String(format:"\(hoursCount) hours \(minutesCount) min")
-            }
-        }
-        else {
-            durationString = String(format:"\(duration) min")
+            if duration == 0 {
+                durationString = "No duration"
+            } else {
+                if duration > countMinutesInHour {
+                    if hoursCount < 2 {
+                        durationString = String(format:"\(hoursCount) hour \(minutesCount) min")
+                    } else {
+                        durationString = String(format:"\(hoursCount) hours \(minutesCount) min")
+                    }
+                }
+                else {
+                    durationString = String(format:"\(duration) min")
+                }
         }
         return durationString
+    }
+    
+    static func getPrefixBeforeCharacter(character: String, fromString string: String) -> String {
+        let array = (string as NSString).components(separatedBy: character)
+        return array[0]
     }
 }

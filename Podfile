@@ -10,6 +10,8 @@ target 'MovieTranslator' do
   pod "AlamofireNetworkActivityLogger"
   pod "SwiftyJSON"
   pod "ObjectMapper"
+  pod "SVProgressHUD"
+  pod "SDWebImage"
 
   # Pods for MovieTranslator
 

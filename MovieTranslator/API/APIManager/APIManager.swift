@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 public typealias responseBlock = (DataResponse<Any>?, String?) -> Void
-let timeoutInterval = 30.0
+let timeoutInterval = 20.0
 
 class APIManager {
     
@@ -25,7 +25,7 @@ class APIManager {
     
     
     
-    func get(methodName: String, parameters : [String : String], completion: @escaping responseBlock) -> DataRequest {
+    func get(methodName: String, parameters : [String : Any], completion: @escaping responseBlock) -> DataRequest {
         
         let url = URL(string: (host + methodName).addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)
         return alamofireManager.request(url!, method: .get, parameters: parameters, encoding: URLEncoding.default , headers: nil).responseJSON(completionHandler: { (response) in
