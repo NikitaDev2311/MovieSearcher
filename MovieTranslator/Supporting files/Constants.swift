@@ -31,6 +31,7 @@ let youtoubeURLPrefix = "https://www.youtube.com/watch?v="
 let searchTimerInterval = 1.0
 let topIndexPath = IndexPath(row: 0, section: 0)
 let screenWidth = UIScreen.main.bounds.width
+let onePageMoviesCount = 20
 enum UserDefaultsKeys : String {
     case isFirstSearch = "isFirstSearch"
     

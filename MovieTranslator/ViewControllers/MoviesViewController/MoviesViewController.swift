@@ -23,6 +23,7 @@ class MoviesViewController: BaseViewController, UITableViewDelegate , UITableVie
     var offset = CGPoint()
     var dataSource = [MovieModel]()
     var searchResults = [MovieModel]()
+    var tempResults = [MovieModel]()
     fileprivate var timer: Timer?
     
     var genreList : GenreList?
@@ -123,6 +124,7 @@ class MoviesViewController: BaseViewController, UITableViewDelegate , UITableVie
                 let weakSelf = self
                 weakSelf?.isSearchingNow = false
                 weakSelf?.dataSource += movies as! [MovieModel]
+                weakSelf?.tempResults = movies as! [MovieModel]
                 weakSelf?.moviesPage += 1
                 weakSelf?.hideLoading()
                 weakSelf?.moviesTableView.reloadData()
@@ -159,6 +161,7 @@ class MoviesViewController: BaseViewController, UITableViewDelegate , UITableVie
                 weakSelf?.hideLoading()
                 weakSelf?.isSearchingNow = true
                 let searchArray = response as! [MovieModel]
+                weakSelf?.tempResults = searchArray
                 weakSelf?.searchResults += searchArray
                 weakSelf?.moviesTableView.reloadData()
                 weakSelf?.setNavigationBarTitleIfNeed()
@@ -275,8 +278,10 @@ class MoviesViewController: BaseViewController, UITableViewDelegate , UITableVie
         
         if offset.y > (heightDifference) {
             if !isLoadingNow {
-                isSearchingNow ? searchMovies(text: searchTerms, page: moviesPage) : getPopularMovies(page: moviesPage)
-                isLoadingNow = true
+                if tempResults.count >= onePageMoviesCount {
+                    isSearchingNow ? searchMovies(text: searchTerms, page: moviesPage) : getPopularMovies(page: moviesPage)
+                    isLoadingNow = true
+                }
             }
         }
     }
