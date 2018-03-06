@@ -9,11 +9,14 @@
 import Foundation
 import UIKit
 import SnapKit
-import YouTubePlayer
-import WebKit
 
-class MovieDetailViewController : UIViewController, UIScrollViewDelegate {
-    //UI
+class MovieDetailViewController : BaseViewController, UIScrollViewDelegate, UIGestureRecognizerDelegate {
+    
+    
+    @IBOutlet weak var fullScreenScrollView: UIScrollView!
+    @IBOutlet weak var fullScreenImageView: UIImageView!
+    
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var detailMovieScrollView: UIScrollView!
     @IBOutlet weak var trailerContainerView: UIView!
     @IBOutlet weak var posterImageView: UIImageView!
@@ -28,50 +31,75 @@ class MovieDetailViewController : UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var infoView: UIView!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var showTrailerButton: UIButton!
-    //Navigation
-    lazy var router : Router = {
-        Router(self.navigationController)
-    }()
-    //Data
+    
     var movie : MovieModel?
     var movieInfo : MovieInfo?
-    var results : [[String : Any]]?
-    var movieTrailerKey : String?
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
-        setNavigationBarTitleIfNeed()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        setScrollViewContentSize()
+    }
+    
+    //MARK: - Actions
+    
+    @IBAction func playMovieTrailer(_ sender: Any) {
+        guard let key = movieInfo?.movieTrailerKey else {return}
+        router.showTrailerViewController(withMovieTrailerKey: key)
+    }
+    
+    
+    @IBAction func action(_ sender: Any) {
+        openImageInFullScreenMode()
+    }
+    
+    
+    @IBAction func hideFullScreenMode(_ sender: Any) {
+        closeFullScreenMode()
     }
     
     //MARK: - Private
     
     private func initialSetup() {
         prepareContent()
+        setNavigationBarTitleIfNeed()
     }
     
     private func prepareContent() {
-        getMovieInfo(byID: movie!.id!)
+        guard let movieID = movie?.id else {return}
+        getMovieInfo(byID: movieID)
     }
     
-    @IBAction func playMovieTrailer(_ sender: Any) {
-        if (movieTrailerKey != nil) {
-            router.showTrailerViewController(withMovieTrailerKey: movieTrailerKey!)
-        }
+    private func openImageInFullScreenMode() {
+        navigationController?.setNavigationBarHidden(true, animated: true)
+        UIApplication.shared.statusBarStyle = .default
+        UIApplication.shared.isStatusBarHidden = true
+        showScrollViewAnimated()
+//        fullScreenScrollView.isHidden = false
+    }
+    
+    private func closeFullScreenMode() {
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        UIApplication.shared.isStatusBarHidden = false
+        hideScrollViewAnimated()
     }
     
     private func displayMovieProperties() {
         guard let movie = movie else { return }
         self.posterImageView.setImage(withImageURL: movie.imageUrl)
-        self.movieNameLabel.text = movie.title ?? "No title"
+        self.fullScreenImageView.image = self.posterImageView.image
+        self.movieNameLabel.text = movie.title ?? noTitle
         MovieModel.setGenre(ofMovie: movie, toLabel: self.genreNameLabel)
-        self.releaseDateLabel.text = String(format:"\(movie.releaseDateString ?? "No date"),")
+        self.releaseDateLabel.text = String(format:"\(movie.releaseDateString ?? noDate),")
         self.movieLanguageLabel.text = movie.originalLanguage?.capitalized
-        self.descriptionTextLabel.text = movie.description == "" ? "No description" : movie.description ?? "No description"
-        self.movieDurationLabel.text = MovieModel.getString(ofMovieDuration: movie.movieDuration ?? 0)
-        self.countryNameLabel.text = movie.productionCountry ?? "Unknown country"
+        guard let description = movie.description else {self.descriptionTextLabel.text = noDescription;return}
+        self.descriptionTextLabel.text = description == "" ? noDescription : description
+        self.movieDurationLabel.text = MovieModel.getString(ofMovieDuration: movie.movieDuration ?? noMovieDurationValue)
+        self.countryNameLabel.text = movie.productionCountry ?? unknownCountry
     }
     
     //MARK: API Requests
@@ -79,119 +107,105 @@ class MovieDetailViewController : UIViewController, UIScrollViewDelegate {
         showLoading()
         MovieService.shared.getMoviePrimaryInfo(byMovieID: id, appendToResponse: videoAppendToResponse) { [weak self] (movieInfo, error) in
             let weakSelf = self
+            weakSelf?.hideLoading()
             weakSelf?.movieInfo = movieInfo as? MovieInfo
             weakSelf?.movie!.productionCountry = weakSelf?.movieInfo?.productionCountryName
             weakSelf?.movie!.movieDuration = weakSelf?.movieInfo?.duration
-            if let results = weakSelf?.movieInfo?.videosDictionariesArray!["results"] as? [[String : Any]] {
-                weakSelf?.results = results
-                if results.count > 1 {
-                    weakSelf?.movieTrailerKey =  results[1]["key"] as? String
-                }
-            }
-            weakSelf?.settingsUI()
             weakSelf?.displayMovieProperties()
-            weakSelf?.hideLoading()
+            weakSelf?.settingsUI()
+            
         }
         
     }
     
+    func setScrollViewContentSize() {
+        detailMovieScrollView.contentSize = CGSize(width: screenWidth, height: descriptionView.frameBottom() + 20)
+    }
+    
     //MARK: - Customize UI
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        autoLayoutSettings()
-    }
     
-    func autoLayoutSettings() {
-        makeConstraints()
-    }
-    
-    func settingsUI() {
-        detailMovieScrollView.delegate = self
-        detailMovieScrollView.contentInsetAdjustmentBehavior = .never
-        detailMovieScrollView.indicatorStyle = .black
-        detailMovieScrollView.scrollIndicatorInsets = view.safeAreaInsets
-        detailMovieScrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: view.safeAreaInsets.bottom, right: 0)
-        descriptionView.backgroundColor = detailMovieScrollView.backgroundColor
-        infoView.backgroundColor = detailMovieScrollView.backgroundColor
-        self.navigationController?.navigationBar.topItem!.title = ""
-        self.navigationItem.title = movieDetailsNavigationBarTitle
+    private func settingsUI() {
+        scrollViewsSettings()
+        title = ""
+        setNavigationBarTitleIfNeed()
         showTrailerButton.isEnabled = false
-        if movieTrailerKey == nil {
-            showTrailerButton.titleLabel?.text = "No trailer"
-            showTrailerButton.titleLabel?.textColor = .red
+        if movieInfo?.movieTrailerKey == nil {
+            trailerButtonSettings()
         } else {
             showTrailerButton.isEnabled = true
         }
     }
     
-    private func setNavigationBarTitleIfNeed() {
-        if self.navigationItem.title == nil {
-            self.navigationItem.title = movieDetailsNavigationBarTitle
+    private func scrollViewsSettings() {
+        detailMovieScrollView.delegate = self
+        fullScreenScrollView.delegate = self
+        fullScreenScrollView.minimumZoomScale = 0.5
+        fullScreenScrollView.maximumZoomScale = 3.0
+        fullScreenScrollView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        fullScreenImageView.contentMode = .scaleAspectFit
+        fullScreenImageView.autoresizingMask = [.flexibleLeftMargin, .flexibleRightMargin]
+        fullScreenImageView.frame = fullScreenScrollView.frame
+    }
+    
+    private func showScrollViewAnimated() {
+        UIView.animate(withDuration: 0.2, animations: {
+            self.fullScreenScrollView.isHidden = false
+            self.view.bringSubview(toFront: self.fullScreenScrollView)
+            self.fullScreenScrollView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        }) { (finished) in
+            UIView.animate(withDuration: 0.2, animations: {
+                self.fullScreenScrollView.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
         }
     }
     
-    func makeConstraints() {
-      
-        let navigationBarHeight = self.navigationController?.navigationBar.frame.size.height
-        
-        trailerContainerView.snp.makeConstraints {
-            make in
-            
-            make.top.equalTo(detailMovieScrollView).inset(navigationBarHeight!)
-            make.left.right.equalTo(view)
-            make.height.equalTo(view.snp.height).multipliedBy(0.7)
+    private func hideScrollViewAnimated() {
+        let scaleTransform = CGAffineTransform(scaleX: 0.05, y: 0.05)
+        let toX = posterImageView.frame.origin.x
+        let toY = posterImageView.frame.origin.y - posterImageView.frame.size.height
+        let scaleAndTranslateTransform = scaleTransform.translatedBy(x: toX, y: toY)
+        UIView.animate(withDuration: 0.3, animations: {
+            self.fullScreenScrollView.transform = scaleAndTranslateTransform
+        }) { (finished) in
+            self.fullScreenScrollView.transform = .identity
+            self.fullScreenScrollView.isHidden = true
+            self.view.sendSubview(toBack: self.fullScreenScrollView)
         }
-        
-        detailMovieScrollView.snp.makeConstraints {
-            make in
-            
-            make.edges.equalTo(view)
+    }
+    
+    private func trailerButtonSettings() {
+        showTrailerButton.setTitle(String(format:"🎬 \(noTrailer)"), for: .normal)
+        showTrailerButton.setTitleColor(.red, for: .normal)
+    }
+    
+    private func setNavigationBarTitleIfNeed() {
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        title = movieDetailsNavigationBarTitle
+    }
+    
+    //MARK: - UIScrollViewDelegate
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        setScrollViewContentSize()
+    }
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return fullScreenImageView
+    }
+    
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        fullScreenImageView.center = fullScreenScrollView.center
+    }
+    
+    func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
+        fullScreenImageView.center = fullScreenScrollView.center
+        if scrollView.zoomScale < 1 {
+            UIView.animate(withDuration: 0.05, animations: {
+                self.fullScreenImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
+            })
         }
-        
-        posterImageView.snp.makeConstraints {
-            make in
-            
-            
-            make.left.right.equalTo(trailerContainerView)
-            make.top.equalTo(view).offset(navigationBarHeight!+navigationBarHeight!).priority(.high)
-            make.height.greaterThanOrEqualTo(trailerContainerView.snp.height).priority(.required)
-            make.bottom.equalTo(trailerContainerView.snp.bottom)
-        }
-        
-        infoView.snp.makeConstraints {
-            make in
-            
-            make.top.equalTo(trailerContainerView.snp.bottom).offset(20)
-            make.left.right.equalTo(view)
-            make.height.equalTo(infoView.snp.width).multipliedBy(0.5)
-        }
-        
-        descriptionView.snp.makeConstraints {
-            make in
-            
-            make.top.equalTo(infoView.snp.bottom)
-            make.left.right.equalTo(view)
-            make.height.lessThanOrEqualTo(view.snp.height).multipliedBy(0.5)
-            make.bottom.equalTo(detailMovieScrollView)
-        }
-        
-        descriptionTextLabel.snp.makeConstraints {
-            make in
-            
-            make.top.equalTo(descriptionView).offset(30)
-            make.left.equalTo(descriptionView).offset(30)
-            make.right.equalTo(descriptionView).inset(30)
-        }
-        
-        descriptionLabel.snp.makeConstraints {
-            make in
-            
-            make.left.equalTo(descriptionTextLabel.snp.left)
-            make.top.equalTo(descriptionView)
-        }
- 
- }
-
+    }
+    
     
 }
         

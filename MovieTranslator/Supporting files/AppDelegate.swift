@@ -19,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         navigationBarAppearenceSettings()
         startLoggingNetworkRequests()
-        
         return true
     }
     
@@ -51,6 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
         UINavigationBar.appearance().backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         UINavigationBar.appearance().tintColor = UIColor.white
+        
     }
     
     //MARK: - Network

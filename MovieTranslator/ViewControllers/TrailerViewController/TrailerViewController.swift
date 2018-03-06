@@ -8,11 +8,11 @@
 
 import Foundation
 import UIKit
-import WebKit
+import youtube_ios_player_helper
 
-class TrailerViewController : UIViewController , NSURLConnectionDataDelegate, WKNavigationDelegate {
+class TrailerViewController : UIViewController , NSURLConnectionDataDelegate, UIWebViewDelegate , YTPlayerViewDelegate {
     
-    @IBOutlet weak var wkWebView: WKWebView!
+    @IBOutlet weak var playerView: YTPlayerView!
     var videoKey : String?
     
     override func viewDidLoad() {
@@ -20,23 +20,19 @@ class TrailerViewController : UIViewController , NSURLConnectionDataDelegate, WK
         initialSetup(key: videoKey)
     }
     
-    //MARK: - WKNavigationDelegate
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+    //MARK: - Private
+    private func initialSetup(key : String?) {
+        guard let movieKey = key else {return}
+        playerView.delegate = self
+        playerView.load(withVideoId: movieKey)
+    }
+    
+    //MARK: - YoutoubePlayerViewDelegate
+    
+    func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
         hideLoading()
     }
     
-    //MARK: - Private
-    private func initialSetup(key : String?) {
-        wkWebView = WKWebView()
-        wkWebView.navigationDelegate = self
-        view = wkWebView
-        
-        
-        
-
-        let url = URL(string: String(format:"\(youtoubeURLPrefix)%@", key!))!
-        wkWebView.load(URLRequest(url: url))
-    }
     
 }
 

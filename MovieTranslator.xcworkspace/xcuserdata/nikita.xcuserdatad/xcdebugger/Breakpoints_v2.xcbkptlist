@@ -22,15 +22,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MovieTranslator/ViewControllers/MoviesViewController/MoviesViewController.swift"
-            timestampString = "541512542.9045891"
+            timestampString = "542053894.5337189"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
             landmarkName = "getPopularMovies(page:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MovieTranslator/ViewControllers/MoviesViewController/MoviesViewController.swift"
-            timestampString = "541512542.904651"
+            timestampString = "542053894.5337811"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
             landmarkName = "searchMovies(text:page:)"
             landmarkType = "7">
             <Locations>
@@ -86,64 +86,122 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MovieTranslator/ViewControllers/MoviesViewController/MoviesViewController.swift"
-            timestampString = "541512542.904695"
+            timestampString = "542053894.5338269"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
-            landmarkName = "getPopularMovies(page:)"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
+            landmarkName = "callSearch()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MovieTranslator.MoviesViewController.(getPopularMovies in _C4B3268EEA43F8F5786790E896A358F3)(page: Swift.Int) -&gt; ()"
-                  moduleName = "MovieTranslator"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/nikita/Desktop/Projects/MovieTranslator/MovieTranslator/ViewControllers/MoviesViewController/MoviesViewController.swift"
-                  timestampString = "541512092.60037"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "172"
-                  endingLineNumber = "172"
-                  offsetFromSymbolStart = "64">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;Any&gt;&gt;, Swift.Optional&lt;Swift.String&gt;) -&gt; () in MovieTranslator.MoviesViewController.(getPopularMovies in _C4B3268EEA43F8F5786790E896A358F3)(page: Swift.Int) -&gt; ()"
-                  moduleName = "MovieTranslator"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/nikita/Desktop/Projects/MovieTranslator/MovieTranslator/ViewControllers/MoviesViewController/MoviesViewController.swift"
-                  timestampString = "541512092.602537"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "172"
-                  endingLineNumber = "172"
-                  offsetFromSymbolStart = "48">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            scope = "0"
+            stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MovieTranslator/ViewControllers/TrailerViewController/TrailerViewController.swift"
+            timestampString = "541936861.349763"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MovieTranslator/ViewControllers/MoviesViewController/MoviesViewController.swift"
+            timestampString = "542053894.533911"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "tableView(_:didSelectRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MovieTranslator/Models/MovieModel/MovieModel.swift"
+            timestampString = "541965924.941499"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "mapping(map:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MovieTranslator/ViewControllers/MovieDetailsViewController/MovieDetailViewController.swift"
-            timestampString = "541512542.9047379"
+            timestampString = "542053894.533995"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
-            landmarkName = "makeConstraints()"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "setScrollViewContentSize()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MovieTranslator/ViewControllers/MovieDetailsViewController/MovieDetailViewController.swift"
+            timestampString = "542053894.534446"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "displayMovieProperties()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MovieTranslator/ViewControllers/MovieDetailsViewController/MovieDetailViewController.swift"
+            timestampString = "542053894.534739"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "action(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

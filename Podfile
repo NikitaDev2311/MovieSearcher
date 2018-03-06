@@ -12,6 +12,7 @@ target 'MovieTranslator' do
   pod "ObjectMapper"
   pod "SVProgressHUD"
   pod "SDWebImage"
+  pod "youtube-ios-player-helper"
 
   # Pods for MovieTranslator
 

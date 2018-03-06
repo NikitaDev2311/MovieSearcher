@@ -15,6 +15,7 @@ class MovieModel : BaseModel {
     var title : String?
     var releaseDateString : String?
     var genreIDs : [Int?]?
+//    var genres : [GenreModel]?
     var genres : [String?]? = [String]()
     var imagePosterPath : String?
     var imageUrl : String?
@@ -41,6 +42,7 @@ class MovieModel : BaseModel {
         self.imagePosterPath        <- map["poster_path"]
         self.description            <- map["overview"]
         self.originalLanguage       <- map["original_language"]
+        self.genres                 <- map["genres"]
         
         //init image url
         guard let imagePosterPath = self.imagePosterPath else { return }
@@ -59,6 +61,8 @@ class MovieInfo : BaseModel {
     var productionCountryName : String?
     var duration : Int?
     var videosDictionariesArray : [String : Any]?
+    var videoResults: [[String : Any]]?
+    var movieTrailerKey : String?
     
     public required init?(map: Map) {
         super.init(map: map)
@@ -70,6 +74,14 @@ class MovieInfo : BaseModel {
         self.productionCountries          <- map["production_countries"]
         self.duration                     <- map["runtime"]
         self.videosDictionariesArray      <- map["videos"]
+        self.videoResults = videosDictionariesArray?["results"] as? [[String : Any]]
+        
+        guard let results = self.videoResults else {return}
+        if results.count > 0 {
+            guard let key = results[0]["key"] as? String else {return}
+            self.movieTrailerKey = key
+        }
+        
         
         guard let productionCountries = self.productionCountries else { return }
         if productionCountries.count > 0 {

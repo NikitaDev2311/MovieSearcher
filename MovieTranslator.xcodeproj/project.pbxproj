@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		036C102681FBAAA4300D72A6 /* Pods_MovieTranslator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADD4B7E4A51CA309CB99C3E8 /* Pods_MovieTranslator.framework */; };
 		11003A8F20409CFD0020C647 /* TrailerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11003A8E20409CFD0020C647 /* TrailerViewController.swift */; };
+		110A9AE6204C8A5800A0FFF1 /* youtube_ios_player_helper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 110A9AE7204C8A5800A0FFF1 /* youtube_ios_player_helper.framework */; };
+		110A9AE8204C8A5D00A0FFF1 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 110A9AE9204C8A5D00A0FFF1 /* SDWebImage.framework */; };
 		1120A8B3203475F400C85649 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1120A8B2203475F400C85649 /* Constants.swift */; };
 		114A8D32202FE60500B964F8 /* ResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114A8D31202FE60500B964F8 /* ResponseParser.swift */; };
 		116FAF33203C61D3008CE2E3 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116FAF38203C61D3008CE2E3 /* Alamofire.framework */; };
@@ -26,17 +28,23 @@
 		11961DD1202D973000F97ACA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11961DD0202D973000F97ACA /* Assets.xcassets */; };
 		11961DD4202D973000F97ACA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11961DD2202D973000F97ACA /* LaunchScreen.storyboard */; };
 		1197E764202FD40900A449A3 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1197E763202FD40900A449A3 /* APIManager.swift */; };
+		11A98D93204757A800891EF6 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A98D92204757A800891EF6 /* BaseViewController.swift */; };
+		11C0DCAE204EE730006913EF /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C0DCAD204EE730006913EF /* UIViewExtension.swift */; };
+		11C0DCB0204EE769006913EF /* MovieModelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C0DCAF204EE769006913EF /* MovieModelExtension.swift */; };
+		11C0DCB2204EE7DA006913EF /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C0DCB1204EE7DA006913EF /* UIViewControllerExtension.swift */; };
 		11EB9B302044811C009F9592 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EB9B2F2044811C009F9592 /* Router.swift */; };
 		11F27531202DA374001F045D /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F27530202DA374001F045D /* ApiConstants.swift */; };
 		11F27534202DB151001F045D /* ApiMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F27533202DB151001F045D /* ApiMethods.swift */; };
 		11F3BC092031922B003B479D /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F3BC082031922B003B479D /* MovieService.swift */; };
 		11F3BC0C2031995A003B479D /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F3BC0B2031995A003B479D /* MovieModel.swift */; };
-		11F3BC0E2031A794003B479D /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F3BC0D2031A794003B479D /* Extension.swift */; };
+		11F3BC0E2031A794003B479D /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F3BC0D2031A794003B479D /* UIImageViewExtension.swift */; };
 		11F3BC102031BA4A003B479D /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F3BC0F2031BA4A003B479D /* BaseModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		11003A8E20409CFD0020C647 /* TrailerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailerViewController.swift; sourceTree = "<group>"; };
+		110A9AE7204C8A5800A0FFF1 /* youtube_ios_player_helper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = youtube_ios_player_helper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		110A9AE9204C8A5D00A0FFF1 /* SDWebImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1120A8B2203475F400C85649 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		114A8D31202FE60500B964F8 /* ResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseParser.swift; sourceTree = "<group>"; };
 		116FAF38203C61D3008CE2E3 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,12 +64,16 @@
 		11961DD3202D973000F97ACA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11961DD5202D973000F97ACA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1197E763202FD40900A449A3 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		11A98D92204757A800891EF6 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		11C0DCAD204EE730006913EF /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		11C0DCAF204EE769006913EF /* MovieModelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModelExtension.swift; sourceTree = "<group>"; };
+		11C0DCB1204EE7DA006913EF /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		11EB9B2F2044811C009F9592 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		11F27530202DA374001F045D /* ApiConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConstants.swift; sourceTree = "<group>"; };
 		11F27533202DB151001F045D /* ApiMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiMethods.swift; sourceTree = "<group>"; };
 		11F3BC082031922B003B479D /* MovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
 		11F3BC0B2031995A003B479D /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
-		11F3BC0D2031A794003B479D /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		11F3BC0D2031A794003B479D /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		11F3BC0F2031BA4A003B479D /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		736319C2BF63EB9A6C09D872 /* Pods-MovieTranslator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieTranslator.release.xcconfig"; path = "Pods/Target Support Files/Pods-MovieTranslator/Pods-MovieTranslator.release.xcconfig"; sourceTree = "<group>"; };
 		ADD4B7E4A51CA309CB99C3E8 /* Pods_MovieTranslator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieTranslator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,6 +85,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				110A9AE8204C8A5D00A0FFF1 /* SDWebImage.framework in Frameworks */,
+				110A9AE6204C8A5800A0FFF1 /* youtube_ios_player_helper.framework in Frameworks */,
 				116FAF33203C61D3008CE2E3 /* Alamofire.framework in Frameworks */,
 				116FAF34203C61D3008CE2E3 /* AlamofireNetworkActivityLogger.framework in Frameworks */,
 				116FAF35203C61D3008CE2E3 /* ObjectMapper.framework in Frameworks */,
@@ -170,6 +184,7 @@
 		1191D7EC202E205A0041ADB7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				11A98D912047578F00891EF6 /* BaseViewController */,
 				112275032036EB7100DF540B /* MoviesViewController */,
 				112275042036EB7C00DF540B /* MovieDetailsViewController */,
 				11003A8D20409CE80020C647 /* TrailerViewController */,
@@ -190,7 +205,6 @@
 			isa = PBXGroup;
 			children = (
 				11961DC8202D973000F97ACA /* MovieTranslator */,
-				1191D7ED202E20750041ADB7 /* Storyboards */,
 				11961DC7202D973000F97ACA /* Products */,
 				923D3AB6809C9C6E7066C3D9 /* Pods */,
 				7797B794B985C28F3C7AABFC /* Frameworks */,
@@ -208,6 +222,8 @@
 		11961DC8202D973000F97ACA /* MovieTranslator */ = {
 			isa = PBXGroup;
 			children = (
+				1191D7ED202E20750041ADB7 /* Storyboards */,
+				11C0DCAC204EE71A006913EF /* Extensions */,
 				11EB9B2E204480FE009F9592 /* Navigation */,
 				1197E765202FDA0800A449A3 /* Models */,
 				1191D7EC202E205A0041ADB7 /* ViewControllers */,
@@ -229,6 +245,57 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		11A98D912047578F00891EF6 /* BaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				11A98D92204757A800891EF6 /* BaseViewController.swift */,
+			);
+			path = BaseViewController;
+			sourceTree = "<group>";
+		};
+		11C0DCAC204EE71A006913EF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				11C0DCB6204EE853006913EF /* UIViewController */,
+				11C0DCB5204EE848006913EF /* MovieModel */,
+				11C0DCB4204EE83E006913EF /* UIView */,
+				11C0DCB3204EE831006913EF /* UIImageView */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		11C0DCB3204EE831006913EF /* UIImageView */ = {
+			isa = PBXGroup;
+			children = (
+				11F3BC0D2031A794003B479D /* UIImageViewExtension.swift */,
+			);
+			path = UIImageView;
+			sourceTree = "<group>";
+		};
+		11C0DCB4204EE83E006913EF /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				11C0DCAD204EE730006913EF /* UIViewExtension.swift */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		11C0DCB5204EE848006913EF /* MovieModel */ = {
+			isa = PBXGroup;
+			children = (
+				11C0DCAF204EE769006913EF /* MovieModelExtension.swift */,
+			);
+			path = MovieModel;
+			sourceTree = "<group>";
+		};
+		11C0DCB6204EE853006913EF /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				11C0DCB1204EE7DA006913EF /* UIViewControllerExtension.swift */,
+			);
+			path = UIViewController;
+			sourceTree = "<group>";
+		};
 		11EB9B2E204480FE009F9592 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
@@ -240,7 +307,6 @@
 		11F2752F202DA32E001F045D /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
-				11F3BC0D2031A794003B479D /* Extension.swift */,
 				1120A8B2203475F400C85649 /* Constants.swift */,
 				11961DC9202D973000F97ACA /* AppDelegate.swift */,
 				11961DD0202D973000F97ACA /* Assets.xcassets */,
@@ -278,6 +344,8 @@
 		7797B794B985C28F3C7AABFC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				110A9AE9204C8A5D00A0FFF1 /* SDWebImage.framework */,
+				110A9AE7204C8A5800A0FFF1 /* youtube_ios_player_helper.framework */,
 				116FAF38203C61D3008CE2E3 /* Alamofire.framework */,
 				116FAF39203C61D3008CE2E3 /* AlamofireNetworkActivityLogger.framework */,
 				116FAF3A203C61D3008CE2E3 /* ObjectMapper.framework */,
@@ -383,6 +451,7 @@
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/youtube-ios-player-helper/youtube_ios_player_helper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -393,6 +462,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/youtube_ios_player_helper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -445,11 +515,15 @@
 				117C57F72032E28A00CB7286 /* GenreModel.swift in Sources */,
 				117C57FD203351A700CB7286 /* MovieDetailViewController.swift in Sources */,
 				11F3BC0C2031995A003B479D /* MovieModel.swift in Sources */,
+				11C0DCAE204EE730006913EF /* UIViewExtension.swift in Sources */,
 				11F27534202DB151001F045D /* ApiMethods.swift in Sources */,
+				11A98D93204757A800891EF6 /* BaseViewController.swift in Sources */,
 				11961DCA202D973000F97ACA /* AppDelegate.swift in Sources */,
 				11EB9B302044811C009F9592 /* Router.swift in Sources */,
+				11C0DCB0204EE769006913EF /* MovieModelExtension.swift in Sources */,
+				11C0DCB2204EE7DA006913EF /* UIViewControllerExtension.swift in Sources */,
 				11003A8F20409CFD0020C647 /* TrailerViewController.swift in Sources */,
-				11F3BC0E2031A794003B479D /* Extension.swift in Sources */,
+				11F3BC0E2031A794003B479D /* UIImageViewExtension.swift in Sources */,
 				1191D7E5202DFDD80041ADB7 /* MovieTableViewCell.swift in Sources */,
 				11F27531202DA374001F045D /* ApiConstants.swift in Sources */,
 				1120A8B3203475F400C85649 /* Constants.swift in Sources */,
@@ -595,7 +669,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A346444TGX;
 				INFOPLIST_FILE = MovieTranslator/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = NikitasApps.MovieTranslator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -612,7 +686,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A346444TGX;
 				INFOPLIST_FILE = MovieTranslator/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = NikitasApps.MovieTranslator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
