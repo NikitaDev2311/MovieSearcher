@@ -15,7 +15,6 @@ class MovieModel : BaseModel {
     var title : String?
     var releaseDateString : String?
     var genreIDs : [Int?]?
-//    var genres : [GenreModel]?
     var genres : [String?]? = [String]()
     var imagePosterPath : String?
     var imageUrl : String?
@@ -48,10 +47,6 @@ class MovieModel : BaseModel {
         guard let imagePosterPath = self.imagePosterPath else { return }
         self.imageUrl = imageUrlPrefix + imagePosterPath
         
-        //guard let releaseDateString = self.releaseDateString else { return }
-        
-//        self.releaseDateString = releaseDateString.substring(to: releaseDateString.characters.index(of: "-")!)
-        
     }
 }
 
@@ -81,8 +76,7 @@ class MovieInfo : BaseModel {
             guard let key = results[0]["key"] as? String else {return}
             self.movieTrailerKey = key
         }
-        
-        
+    
         guard let productionCountries = self.productionCountries else { return }
         if productionCountries.count > 0 {
         self.productionCountryName = productionCountries[0]["name"]

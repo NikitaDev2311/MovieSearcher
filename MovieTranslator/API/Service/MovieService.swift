@@ -66,25 +66,6 @@ class MovieService {
         
     }
     
-//    func getGenreList(completion:@escaping arrayBlock) {
-//
-//        let parameters = ["api_key" : apiKey]
-//
-//        _ = APIManager.shared.get(methodName: ApiMethod.genreList.rawValue, parameters: parameters, completion: { (response, error) in
-//            if let error = error {
-//                completion(nil, error)
-//            }
-//            guard let dataArray = ResponseParser.parseToDataArray(response) else { completion(nil, ParsingError.parseError.rawValue); return }
-//
-//            guard let genreList = Mapper<GenreModel>().mapArray(JSONArray: dataArray) as [GenreModel]? else { completion(nil, ParsingError.getDataError.rawValue); return }
-//
-//            completion(genreList, nil)
-//
-//        })
-//
-//    }
-    
-    
     func getGenreList(completion:@escaping objectBlock) {
         
         let parameters = ["api_key" : apiKey]

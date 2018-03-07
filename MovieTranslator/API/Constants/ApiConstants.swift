@@ -15,6 +15,8 @@ let host = "https://api.themoviedb.org/3"
 
 let imageUrlPrefix = "https://image.tmdb.org/t/p/w500"
 
+let videoAppendToResponse = "videos"
+
 public typealias arrayBlock = ([Any]?, String?) -> Void
 
 public typealias objectBlock = (Any?, String?) -> Void

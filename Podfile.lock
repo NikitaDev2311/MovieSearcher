@@ -1,7 +1,7 @@
 PODS:
-  - Alamofire (4.6.0)
-  - AlamofireNetworkActivityLogger (2.2.0):
-    - Alamofire (~> 4.0)
+  - Alamofire (4.7.0)
+  - AlamofireNetworkActivityLogger (2.3.0):
+    - Alamofire (~> 4.6)
   - ObjectMapper (3.1.0)
   - SDWebImage (4.3.2):
     - SDWebImage/Core (= 4.3.2)
@@ -22,8 +22,8 @@ DEPENDENCIES:
   - youtube-ios-player-helper
 
 SPEC CHECKSUMS:
-  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
-  AlamofireNetworkActivityLogger: a7ae1842988b3f6248a49213268375bd27b515f0
+  Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
+  AlamofireNetworkActivityLogger: 6f3076652ab7fa6c819b59be08ea038d339e36d8
   ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
   SDWebImage: 29bd3c0bc1f01e5eb59720847c64ad4c4ca1af5d
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694

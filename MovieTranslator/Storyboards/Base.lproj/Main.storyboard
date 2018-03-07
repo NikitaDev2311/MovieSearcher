@@ -387,11 +387,11 @@
                                     <constraint firstAttribute="bottom" secondItem="eIh-Of-3vZ" secondAttribute="bottom" id="k6M-2b-3o8"/>
                                 </constraints>
                             </scrollView>
-                            <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" ambiguous="YES" directionalLockEnabled="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISb-cD-TO7">
+                            <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" directionalLockEnabled="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="3" translatesAutoresizingMaskIntoConstraints="NO" id="ISb-cD-TO7">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noimage" translatesAutoresizingMaskIntoConstraints="NO" id="CfK-yf-mTz">
-                                        <rect key="frame" x="0.0" y="48" width="375" height="550"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                         <gestureRecognizers/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="D5f-0e-RDE" appends="YES" id="p2V-ya-dSz"/>
@@ -402,15 +402,17 @@
                                 <constraints>
                                     <constraint firstItem="CfK-yf-mTz" firstAttribute="centerX" secondItem="ISb-cD-TO7" secondAttribute="centerX" id="254-Wv-ctK"/>
                                     <constraint firstItem="CfK-yf-mTz" firstAttribute="centerY" secondItem="ISb-cD-TO7" secondAttribute="centerY" id="Jf4-ES-BIL"/>
+                                    <constraint firstAttribute="bottom" secondItem="CfK-yf-mTz" secondAttribute="bottom" id="e7N-XN-gwV"/>
                                     <constraint firstAttribute="trailing" secondItem="CfK-yf-mTz" secondAttribute="trailing" id="qCL-MI-kJ0"/>
                                     <constraint firstItem="CfK-yf-mTz" firstAttribute="leading" secondItem="ISb-cD-TO7" secondAttribute="leading" id="vUL-Nx-IzT"/>
+                                    <constraint firstItem="CfK-yf-mTz" firstAttribute="top" secondItem="ISb-cD-TO7" secondAttribute="top" id="xKB-iG-jTt"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ISb-cD-TO7" firstAttribute="top" secondItem="QDK-UO-4zT" secondAttribute="top" id="6i5-j1-zgU"/>
                             <constraint firstItem="QDK-UO-4zT" firstAttribute="trailing" secondItem="b5E-yd-1eZ" secondAttribute="trailing" id="8ZK-hr-CRv"/>
@@ -451,7 +453,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W9W-PF-6Pn" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="6a2-xN-ftH">
                     <connections>
-                        <action selector="action:" destination="SHl-YB-cuH" id="HUn-xy-ZDd"/>
+                        <action selector="openImageInFullScreen:" destination="SHl-YB-cuH" id="HUn-xy-ZDd"/>
                     </connections>
                 </tapGestureRecognizer>
                 <swipeGestureRecognizer direction="down" id="D5f-0e-RDE">

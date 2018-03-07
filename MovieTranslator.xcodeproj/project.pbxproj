@@ -11,6 +11,7 @@
 		11003A8F20409CFD0020C647 /* TrailerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11003A8E20409CFD0020C647 /* TrailerViewController.swift */; };
 		110A9AE6204C8A5800A0FFF1 /* youtube_ios_player_helper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 110A9AE7204C8A5800A0FFF1 /* youtube_ios_player_helper.framework */; };
 		110A9AE8204C8A5D00A0FFF1 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 110A9AE9204C8A5D00A0FFF1 /* SDWebImage.framework */; };
+		1116F15B204FDC3100B6C9E7 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1116F15A204FDC3100B6C9E7 /* StringExtension.swift */; };
 		1120A8B3203475F400C85649 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1120A8B2203475F400C85649 /* Constants.swift */; };
 		114A8D32202FE60500B964F8 /* ResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114A8D31202FE60500B964F8 /* ResponseParser.swift */; };
 		116FAF33203C61D3008CE2E3 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116FAF38203C61D3008CE2E3 /* Alamofire.framework */; };
@@ -45,6 +46,7 @@
 		11003A8E20409CFD0020C647 /* TrailerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailerViewController.swift; sourceTree = "<group>"; };
 		110A9AE7204C8A5800A0FFF1 /* youtube_ios_player_helper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = youtube_ios_player_helper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		110A9AE9204C8A5D00A0FFF1 /* SDWebImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1116F15A204FDC3100B6C9E7 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		1120A8B2203475F400C85649 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		114A8D31202FE60500B964F8 /* ResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseParser.swift; sourceTree = "<group>"; };
 		116FAF38203C61D3008CE2E3 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,6 +107,14 @@
 				11003A8E20409CFD0020C647 /* TrailerViewController.swift */,
 			);
 			path = TrailerViewController;
+			sourceTree = "<group>";
+		};
+		1116F15C204FDC8300B6C9E7 /* String */ = {
+			isa = PBXGroup;
+			children = (
+				1116F15A204FDC3100B6C9E7 /* StringExtension.swift */,
+			);
+			path = String;
 			sourceTree = "<group>";
 		};
 		112275032036EB7100DF540B /* MoviesViewController */ = {
@@ -222,14 +232,13 @@
 		11961DC8202D973000F97ACA /* MovieTranslator */ = {
 			isa = PBXGroup;
 			children = (
-				1191D7ED202E20750041ADB7 /* Storyboards */,
-				11C0DCAC204EE71A006913EF /* Extensions */,
-				11EB9B2E204480FE009F9592 /* Navigation */,
 				1197E765202FDA0800A449A3 /* Models */,
 				1191D7EC202E205A0041ADB7 /* ViewControllers */,
 				11F27535202DB4AF001F045D /* CustomUIElements */,
 				11F27532202DB143001F045D /* API */,
-				11961DD5202D973000F97ACA /* Info.plist */,
+				11EB9B2E204480FE009F9592 /* Navigation */,
+				1191D7ED202E20750041ADB7 /* Storyboards */,
+				11C0DCAC204EE71A006913EF /* Extensions */,
 				11F2752F202DA32E001F045D /* Supporting files */,
 			);
 			path = MovieTranslator;
@@ -256,6 +265,7 @@
 		11C0DCAC204EE71A006913EF /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				1116F15C204FDC8300B6C9E7 /* String */,
 				11C0DCB6204EE853006913EF /* UIViewController */,
 				11C0DCB5204EE848006913EF /* MovieModel */,
 				11C0DCB4204EE83E006913EF /* UIView */,
@@ -307,6 +317,7 @@
 		11F2752F202DA32E001F045D /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
+				11961DD5202D973000F97ACA /* Info.plist */,
 				1120A8B2203475F400C85649 /* Constants.swift */,
 				11961DC9202D973000F97ACA /* AppDelegate.swift */,
 				11961DD0202D973000F97ACA /* Assets.xcassets */,
@@ -517,6 +528,7 @@
 				11F3BC0C2031995A003B479D /* MovieModel.swift in Sources */,
 				11C0DCAE204EE730006913EF /* UIViewExtension.swift in Sources */,
 				11F27534202DB151001F045D /* ApiMethods.swift in Sources */,
+				1116F15B204FDC3100B6C9E7 /* StringExtension.swift in Sources */,
 				11A98D93204757A800891EF6 /* BaseViewController.swift in Sources */,
 				11961DCA202D973000F97ACA /* AppDelegate.swift in Sources */,
 				11EB9B302044811C009F9592 /* Router.swift in Sources */,

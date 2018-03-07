@@ -15,10 +15,8 @@ class MovieDetailViewController : BaseViewController, UIScrollViewDelegate, UIGe
     
     @IBOutlet weak var fullScreenScrollView: UIScrollView!
     @IBOutlet weak var fullScreenImageView: UIImageView!
-    
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var detailMovieScrollView: UIScrollView!
-    @IBOutlet weak var trailerContainerView: UIView!
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var movieNameLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
@@ -53,10 +51,9 @@ class MovieDetailViewController : BaseViewController, UIScrollViewDelegate, UIGe
     }
     
     
-    @IBAction func action(_ sender: Any) {
+    @IBAction func openImageInFullScreen(_ sender: Any) {
         openImageInFullScreenMode()
     }
-    
     
     @IBAction func hideFullScreenMode(_ sender: Any) {
         closeFullScreenMode()
@@ -72,20 +69,6 @@ class MovieDetailViewController : BaseViewController, UIScrollViewDelegate, UIGe
     private func prepareContent() {
         guard let movieID = movie?.id else {return}
         getMovieInfo(byID: movieID)
-    }
-    
-    private func openImageInFullScreenMode() {
-        navigationController?.setNavigationBarHidden(true, animated: true)
-        UIApplication.shared.statusBarStyle = .default
-        UIApplication.shared.isStatusBarHidden = true
-        showScrollViewAnimated()
-//        fullScreenScrollView.isHidden = false
-    }
-    
-    private func closeFullScreenMode() {
-        navigationController?.setNavigationBarHidden(false, animated: false)
-        UIApplication.shared.isStatusBarHidden = false
-        hideScrollViewAnimated()
     }
     
     private func displayMovieProperties() {
@@ -115,7 +98,6 @@ class MovieDetailViewController : BaseViewController, UIScrollViewDelegate, UIGe
             weakSelf?.settingsUI()
             
         }
-        
     }
     
     func setScrollViewContentSize() {
@@ -136,39 +118,61 @@ class MovieDetailViewController : BaseViewController, UIScrollViewDelegate, UIGe
         }
     }
     
+    private func openImageInFullScreenMode() {
+        showHideNavigationBar()
+        showHideStatusBar()
+        showScrollViewAnimated()
+    }
+    
+    private func closeFullScreenMode() {
+        showHideNavigationBar()
+        showHideStatusBar()
+        hideScrollViewAnimated()
+    }
+    
+    private func showHideStatusBar() {
+        let statusBarHidden = UIApplication.shared.isStatusBarHidden
+        UIApplication.shared.isStatusBarHidden = !statusBarHidden
+    }
+    
+    private func showHideNavigationBar() {
+        guard let navigationBarHidden = navigationController?.navigationBar.isHidden else {return}
+        navigationController?.setNavigationBarHidden(!navigationBarHidden, animated: false)
+    }
+    
     private func scrollViewsSettings() {
         detailMovieScrollView.delegate = self
         fullScreenScrollView.delegate = self
-        fullScreenScrollView.minimumZoomScale = 0.5
-        fullScreenScrollView.maximumZoomScale = 3.0
-        fullScreenScrollView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        fullScreenImageView.contentMode = .scaleAspectFit
-        fullScreenImageView.autoresizingMask = [.flexibleLeftMargin, .flexibleRightMargin]
+        fullScreenImageView.contentMode = .scaleAspectFill
         fullScreenImageView.frame = fullScreenScrollView.frame
     }
     
     private func showScrollViewAnimated() {
-        UIView.animate(withDuration: 0.2, animations: {
+        let scaleTransform = CGAffineTransform(scaleX: scrollViewScaleFrom.x, y: scrollViewScaleFrom.y)
+        fullScreenScrollView.transform = scaleTransform
+        UIView.animate(withDuration: scrollViewAnimationsDuration, animations:  {
+            self.detailMovieScrollView.isHidden = true
             self.fullScreenScrollView.isHidden = false
             self.view.bringSubview(toFront: self.fullScreenScrollView)
-            self.fullScreenScrollView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
-        }) { (finished) in
-            UIView.animate(withDuration: 0.2, animations: {
-                self.fullScreenScrollView.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
-        }
+             self.fullScreenScrollView.transform = CGAffineTransform(scaleX: scrollViewScaleTo.x, y: scrollViewScaleTo.y)
+        })
+    }
+    
+    private func imageViewCentering() {
+        fullScreenImageView.center = fullScreenScrollView.center
     }
     
     private func hideScrollViewAnimated() {
-        let scaleTransform = CGAffineTransform(scaleX: 0.05, y: 0.05)
+        let scaleTransform = CGAffineTransform(scaleX: scrollViewScaleFrom.x, y: scrollViewScaleFrom.y)
         let toX = posterImageView.frame.origin.x
         let toY = posterImageView.frame.origin.y - posterImageView.frame.size.height
         let scaleAndTranslateTransform = scaleTransform.translatedBy(x: toX, y: toY)
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: scrollViewAnimationsDuration, animations: {
+            self.detailMovieScrollView.isHidden = false
             self.fullScreenScrollView.transform = scaleAndTranslateTransform
         }) { (finished) in
-            self.fullScreenScrollView.transform = .identity
             self.fullScreenScrollView.isHidden = true
+            self.fullScreenScrollView.transform = .identity
             self.view.sendSubview(toBack: self.fullScreenScrollView)
         }
     }
@@ -194,19 +198,10 @@ class MovieDetailViewController : BaseViewController, UIScrollViewDelegate, UIGe
     }
     
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
-        fullScreenImageView.center = fullScreenScrollView.center
-    }
-    
-    func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
-        fullScreenImageView.center = fullScreenScrollView.center
-        if scrollView.zoomScale < 1 {
-            UIView.animate(withDuration: 0.05, animations: {
-                self.fullScreenImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
-            })
+        if scrollView.zoomScale <= 1 {
+            imageViewCentering()
         }
     }
-    
-    
 }
         
 

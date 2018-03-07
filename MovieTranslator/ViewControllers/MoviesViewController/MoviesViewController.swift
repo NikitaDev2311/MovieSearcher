@@ -186,7 +186,7 @@ class MoviesViewController: BaseViewController, UITableViewDelegate , UITableVie
     
     @objc func callSearch() {
         guard let text = searchBar.text else {return}
-        if !text.isEmpty {
+        if !text.isEmpty && !text.isWhiteSpace() {
             searchMovies(text: text, page: moviesPage)
         } else {
             scrollTableViewToTop()
@@ -251,7 +251,7 @@ class MoviesViewController: BaseViewController, UITableViewDelegate , UITableVie
     
     func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         for char in disallowedCharacters {
-            if text == String(char) {
+            if text == String(char) || text.firstCharIsWhiteSpace() {
                 return false
             }
         }

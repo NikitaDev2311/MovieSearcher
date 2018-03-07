@@ -23,6 +23,15 @@ class MovieTableViewCell : UITableViewCell {
         initialSetup()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.movieNameLabel.text = ""
+        self.yearOfReleaseLabel.text = ""
+        self.genreNameLabel.text = ""
+        self.coverImageView.image = UIImage()
+    }
+    
+    //MARK: - Public
     func load(withMovie movie: MovieModel?) {
         guard let movie = movie else { return }
         DispatchQueue.main.async {
@@ -41,13 +50,7 @@ class MovieTableViewCell : UITableViewCell {
         }
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        self.movieNameLabel.text = ""
-        self.yearOfReleaseLabel.text = ""
-        self.genreNameLabel.text = ""
-        self.coverImageView.image = UIImage()
-    }
+    //MARK: - Private
     
     private func initialSetup() {
         self.coverImageView?.layer.masksToBounds = true

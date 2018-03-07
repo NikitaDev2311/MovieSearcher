@@ -14,23 +14,10 @@ class GenreModel {
     var id : Int?
     var name : String?
     
-//    public required init?(map: Map) {
-//        super.init(map: map)
-//    }
-//
-//    public override func mapping(map: Map) {
-//        super.mapping(map: map)
-//
-//        self.id             <- map["id"]
-//        self.name           <- map["name"]
-//    }
-    
     init(withID id: Int, _ name: String) {
         self.id = id
         self.name = name
     }
-    
-    
 }
 
 
