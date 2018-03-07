@@ -100,10 +100,6 @@ class MovieDetailViewController : BaseViewController, UIScrollViewDelegate, UIGe
         }
     }
     
-    func setScrollViewContentSize() {
-        detailMovieScrollView.contentSize = CGSize(width: screenWidth, height: descriptionView.frameBottom() + 20)
-    }
-    
     //MARK: - Customize UI
     
     private func settingsUI() {
@@ -116,6 +112,10 @@ class MovieDetailViewController : BaseViewController, UIScrollViewDelegate, UIGe
         } else {
             showTrailerButton.isEnabled = true
         }
+    }
+    
+    func setScrollViewContentSize() {
+        detailMovieScrollView.contentSize = CGSize(width: screenWidth, height: descriptionView.frameBottom() + 20)
     }
     
     private func openImageInFullScreenMode() {
