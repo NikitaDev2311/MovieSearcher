@@ -44,10 +44,13 @@ class MovieTableViewCell : UITableViewCell {
         self.movieNameLabel.text = movie.title ?? noTitle
         self.coverImageView.setImage(withImageURL: movie.imageUrl)
         self.yearOfReleaseLabel.text = noDate
-        if let releaseDateString = movie.releaseDateString {
-            movie.releaseDateString = MovieModel.getPrefixBeforeCharacter(character: "-", fromString: releaseDateString)
-            self.yearOfReleaseLabel.text = String(format: "\(movie.releaseDateString ?? ""), ")
-        }
+        //Set date label text after formatting
+        guard let releaseDateString = movie.releaseDateString else {movie.releaseDateString = noDate;return}
+        let dateString = MovieModel.getPrefixBeforeCharacter(character: "-", fromString: releaseDateString)
+        movie.releaseDateString = dateString == "" ? noDate : dateString
+        let formattedDateString =  String(format: "\(movie.releaseDateString ?? ""), ")
+        self.yearOfReleaseLabel.text = formattedDateString
+        
     }
     
     //MARK: - Private

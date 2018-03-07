@@ -102,6 +102,8 @@ class MovieDetailViewController : BaseViewController, UIScrollViewDelegate, UIGe
     //MARK: - Customize UI
     
     private func settingsUI() {
+        let movieHasImage = posterImageView.image == #imageLiteral(resourceName: "noimage") ? false : true
+        posterImageView.isUserInteractionEnabled = movieHasImage
         scrollViewsSettings()
         title = ""
         setNavigationBarTitleIfNeed()
