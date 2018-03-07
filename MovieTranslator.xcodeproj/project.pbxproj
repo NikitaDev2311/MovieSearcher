@@ -13,6 +13,7 @@
 		110A9AE8204C8A5D00A0FFF1 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 110A9AE9204C8A5D00A0FFF1 /* SDWebImage.framework */; };
 		1116F15B204FDC3100B6C9E7 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1116F15A204FDC3100B6C9E7 /* StringExtension.swift */; };
 		1120A8B3203475F400C85649 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1120A8B2203475F400C85649 /* Constants.swift */; };
+		114057232050436A003DD9FA /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114057222050436A003DD9FA /* Reachability.swift */; };
 		114A8D32202FE60500B964F8 /* ResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114A8D31202FE60500B964F8 /* ResponseParser.swift */; };
 		116FAF33203C61D3008CE2E3 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116FAF38203C61D3008CE2E3 /* Alamofire.framework */; };
 		116FAF34203C61D3008CE2E3 /* AlamofireNetworkActivityLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116FAF39203C61D3008CE2E3 /* AlamofireNetworkActivityLogger.framework */; };
@@ -47,6 +48,7 @@
 		110A9AE9204C8A5D00A0FFF1 /* SDWebImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1116F15A204FDC3100B6C9E7 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		1120A8B2203475F400C85649 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		114057222050436A003DD9FA /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		114A8D31202FE60500B964F8 /* ResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseParser.swift; sourceTree = "<group>"; };
 		116FAF38203C61D3008CE2E3 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		116FAF39203C61D3008CE2E3 /* AlamofireNetworkActivityLogger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AlamofireNetworkActivityLogger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +131,14 @@
 				117C57FC203351A700CB7286 /* MovieDetailViewController.swift */,
 			);
 			path = MovieDetailsViewController;
+			sourceTree = "<group>";
+		};
+		1140572120504350003DD9FA /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				114057222050436A003DD9FA /* Reachability.swift */,
+			);
+			path = Reachability;
 			sourceTree = "<group>";
 		};
 		114A8D33202FEBCE00B964F8 /* ResponseParser */ = {
@@ -326,6 +336,7 @@
 		11F27532202DB143001F045D /* API */ = {
 			isa = PBXGroup;
 			children = (
+				1140572120504350003DD9FA /* Reachability */,
 				11F3BC0A2031923B003B479D /* Service */,
 				114A8D35202FEBF400B964F8 /* APIManager */,
 				114A8D34202FEBDF00B964F8 /* Constants */,
@@ -525,6 +536,7 @@
 				11C0DCAE204EE730006913EF /* UIViewExtension.swift in Sources */,
 				11F27534202DB151001F045D /* ApiMethods.swift in Sources */,
 				1116F15B204FDC3100B6C9E7 /* StringExtension.swift in Sources */,
+				114057232050436A003DD9FA /* Reachability.swift in Sources */,
 				11A98D93204757A800891EF6 /* BaseViewController.swift in Sources */,
 				11961DCA202D973000F97ACA /* AppDelegate.swift in Sources */,
 				11EB9B302044811C009F9592 /* Router.swift in Sources */,

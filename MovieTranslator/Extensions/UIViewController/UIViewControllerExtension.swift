@@ -23,12 +23,21 @@ extension UIViewController {
         SVProgressHUD.dismiss()
     }
     
-    func showAlert(withMessage message: String) {
+    func showAlert(withMessage message: String, actionOK: UIAlertAction?) {
         
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.alert)
-        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        let alert = UIAlertController(title: errorTitle, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        var action = UIAlertAction()
+        guard let okAction = actionOK else {
+            action = UIAlertAction(title: okTitle, style: .cancel, handler: nil)
+            return
+        }
+        action = okAction
         alert.addAction(action)
         
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func showNetworkingAlert(withAction action: UIAlertAction) {
+        showAlert(withMessage: networkMessage, actionOK: action)
     }
 }

@@ -28,6 +28,8 @@ let scrollViewAnimationsDuration = 0.3
 let popularMoviesNavigationBarTitle = "Popular movies"
 let searchResultsNavigationBarTitle = "Search results"
 let movieDetailsNavigationBarTitle = "Movie details"
+let okTitle = "OK"
+let errorTitle = "Error"
 
 //MARK: - No data constants
 let noTitle = "No title"
@@ -40,6 +42,7 @@ let noMovieDurationValue = 0
 //MARK: - Strings
 let whiteSpace = " " as Character
 let disallowedCharacters = "!?()=*:;^%$#@!~№,._<>/|"
+let networkMessage = "Your device does not connected to network!"
 
 //MARK: - Any Constants
 let defaultMoviePage = 1
