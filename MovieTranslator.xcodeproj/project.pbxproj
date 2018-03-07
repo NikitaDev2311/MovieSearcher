@@ -237,6 +237,7 @@
 				11EB9B2E204480FE009F9592 /* Navigation */,
 				1191D7ED202E20750041ADB7 /* Storyboards */,
 				11C0DCAC204EE71A006913EF /* Extensions */,
+				11961DD5202D973000F97ACA /* Info.plist */,
 				11F2752F202DA32E001F045D /* Supporting files */,
 			);
 			path = MovieTranslator;
@@ -315,7 +316,6 @@
 		11F2752F202DA32E001F045D /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
-				11961DD5202D973000F97ACA /* Info.plist */,
 				1120A8B2203475F400C85649 /* Constants.swift */,
 				11961DC9202D973000F97ACA /* AppDelegate.swift */,
 				11961DD0202D973000F97ACA /* Assets.xcassets */,
