@@ -10,6 +10,7 @@ import UIKit
 
 class MoviesViewController: BaseViewController, UITableViewDelegate , UITableViewDataSource, UISearchBarDelegate, UITextFieldDelegate {
     
+    @IBOutlet weak var searchButton: UIBarButtonItem!
     @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet weak var moviesTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -46,6 +47,7 @@ class MoviesViewController: BaseViewController, UITableViewDelegate , UITableVie
         setNavigationBarTitleIfNeed()
     }
     
+    
     //MARK: - Actions
     
     @IBAction func showSearchBar(_ sender: Any) {
@@ -54,6 +56,7 @@ class MoviesViewController: BaseViewController, UITableViewDelegate , UITableVie
     
     @IBAction func backToPopularMovies(_ sender: Any) {
         searchBar.text = ""
+        showHideSearchBar()
         moviesTableView.reloadData()
         scrollTableViewToTop()
         getPopularMovies(page: defaultMoviePage)
@@ -114,7 +117,10 @@ class MoviesViewController: BaseViewController, UITableViewDelegate , UITableVie
     private func initialSetup() {
         tableViewSettings()
         prepareContent()
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
+    
+    
  
     //MARK: - API Requests
     
@@ -211,14 +217,15 @@ class MoviesViewController: BaseViewController, UITableViewDelegate , UITableVie
     
     private func showHideSearchBar() {
         searchBar.isHidden = !searchBar.isHidden
-        
-        searchBar.becomeFirstResponder()
-        
+
         if searchBar.isHidden {
             navigationController?.setNavigationBarHidden(false, animated: true)
             hideKeyboard()
+            showSearchButton()
         } else {
+            searchBar.becomeFirstResponder()
             navigationController?.setNavigationBarHidden(true, animated: true)
+            hideSearchButton()
         }
     }
     
@@ -235,6 +242,17 @@ class MoviesViewController: BaseViewController, UITableViewDelegate , UITableVie
         backButton.isEnabled = true
         backButton.tintColor = .white
     }
+    
+    func hideSearchButton() {
+        searchButton.isEnabled = false
+        searchButton.tintColor = .clear
+    }
+    
+    func showSearchButton() {
+        searchButton.isEnabled = true
+        searchButton.tintColor = .white
+    }
+    
     
     //MARK: - UISearchBarDelegate
     

@@ -131,6 +131,7 @@
                         <outlet property="moviesTableView" destination="cr8-PP-GSJ" id="pcD-Nz-Wyg"/>
                         <outlet property="noResultsView" destination="yg8-pU-umg" id="IGW-xg-pvA"/>
                         <outlet property="searchBar" destination="Dup-1X-aVK" id="aYR-7I-5fd"/>
+                        <outlet property="searchButton" destination="b79-Q3-ZfS" id="Hyl-4K-JH2"/>
                         <outlet property="searchDisplayController" destination="0iI-PM-BrQ" id="meA-tp-Ms2"/>
                     </connections>
                 </viewController>
