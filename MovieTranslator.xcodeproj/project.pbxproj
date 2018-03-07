@@ -17,7 +17,6 @@
 		116FAF33203C61D3008CE2E3 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116FAF38203C61D3008CE2E3 /* Alamofire.framework */; };
 		116FAF34203C61D3008CE2E3 /* AlamofireNetworkActivityLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116FAF39203C61D3008CE2E3 /* AlamofireNetworkActivityLogger.framework */; };
 		116FAF35203C61D3008CE2E3 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116FAF3A203C61D3008CE2E3 /* ObjectMapper.framework */; };
-		116FAF36203C61D3008CE2E3 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116FAF3B203C61D3008CE2E3 /* SnapKit.framework */; };
 		116FAF37203C61D3008CE2E3 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 116FAF3C203C61D3008CE2E3 /* SVProgressHUD.framework */; };
 		117C57F72032E28A00CB7286 /* GenreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117C57F62032E28A00CB7286 /* GenreModel.swift */; };
 		117C57FD203351A700CB7286 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117C57FC203351A700CB7286 /* MovieDetailViewController.swift */; };
@@ -92,7 +91,6 @@
 				116FAF33203C61D3008CE2E3 /* Alamofire.framework in Frameworks */,
 				116FAF34203C61D3008CE2E3 /* AlamofireNetworkActivityLogger.framework in Frameworks */,
 				116FAF35203C61D3008CE2E3 /* ObjectMapper.framework in Frameworks */,
-				116FAF36203C61D3008CE2E3 /* SnapKit.framework in Frameworks */,
 				116FAF37203C61D3008CE2E3 /* SVProgressHUD.framework in Frameworks */,
 				036C102681FBAAA4300D72A6 /* Pods_MovieTranslator.framework in Frameworks */,
 			);
@@ -460,7 +458,6 @@
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/youtube-ios-player-helper/youtube_ios_player_helper.framework",
 			);
@@ -471,7 +468,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/youtube_ios_player_helper.framework",
 			);
