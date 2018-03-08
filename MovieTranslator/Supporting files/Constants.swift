@@ -23,6 +23,7 @@ let topIndexPath = IndexPath(row: 0, section: 0)
 let scrollViewScaleFrom = CGPoint(x: 0.05, y: 0.05)
 let scrollViewScaleTo = CGPoint(x: 1, y: 1)
 let scrollViewAnimationsDuration = 0.3
+let scrollViewOffset = 20.0 as CGFloat
 
 //MARK: - Titles
 let popularMoviesNavigationBarTitle = "Popular movies"

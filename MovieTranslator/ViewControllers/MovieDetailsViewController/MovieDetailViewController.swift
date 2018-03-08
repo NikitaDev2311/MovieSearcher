@@ -116,7 +116,7 @@ class MovieDetailViewController : BaseViewController, UIScrollViewDelegate, UIGe
     }
     
     func setScrollViewContentSize() {
-        detailMovieScrollView.contentSize = CGSize(width: screenWidth, height: descriptionView.frameBottom() + 20)
+        detailMovieScrollView.contentSize = CGSize(width: screenWidth, height: descriptionView.frameBottom() + scrollViewOffset)
     }
     
     private func openImageInFullScreenMode() {
