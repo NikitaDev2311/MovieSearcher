@@ -41,7 +41,7 @@ class MoviesViewController: BaseViewController, UITableViewDelegate , UITableVie
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         if (navigationController?.isNavigationBarHidden)! {
-            showHideSearchBar()
+            searchBar.isHidden = false
             hideKeyboard()
         }
     }
@@ -54,8 +54,7 @@ class MoviesViewController: BaseViewController, UITableViewDelegate , UITableVie
     }
     
     @IBAction func backToPopularMovies(_ sender: Any) {
-        searchBar.text = ""
-        
+        searchBarTextClear()
         moviesTableView.reloadData()
         scrollTableViewToTop()
         getPopularMovies(page: defaultMoviePage)
@@ -71,7 +70,12 @@ class MoviesViewController: BaseViewController, UITableViewDelegate , UITableVie
         
         let cell = moviesTableView.dequeueReusableCell(withIdentifier: String(describing: MovieTableViewCell.self) , for: indexPath) as! MovieTableViewCell
         
-        movie = isSearchingNow ? searchResults[indexPath.row] : dataSource[indexPath.row]
+        if isSearchingNow {
+            movie = !searchResults.isEmpty ? searchResults[indexPath.row] : dataSource[indexPath.row]
+        } else {
+            movie = dataSource[indexPath.row]
+        }
+        
         cell.load(withMovie: movie)
         return cell
 
@@ -144,7 +148,11 @@ class MoviesViewController: BaseViewController, UITableViewDelegate , UITableVie
             let alertAction = UIAlertAction(title: okTitle, style: .default, handler: { (action) in
                 self.getPopularMovies(page: page)
             })
-            showNetworkingAlert(withAction: alertAction)
+            showNetworkingAlert(withAction: alertAction, completion: {
+                self.moviesTableView.reloadData()
+                self.getPopularMovies(page: page)
+            })
+            
         }
     }
     
@@ -168,7 +176,7 @@ class MoviesViewController: BaseViewController, UITableViewDelegate , UITableVie
                 
                 if (error != nil) {
                     if (error is Error ) {
-                        weakSelf?.showAlert(withMessage: (error?.description)!, actionOK: nil)
+                        weakSelf?.showAlert(withMessage: (error?.description)!, actionOK: nil, completion: nil)
                     }
                     return
                 }
@@ -200,9 +208,13 @@ class MoviesViewController: BaseViewController, UITableViewDelegate , UITableVie
         } else {
             hideLoading()
             let alertAction = UIAlertAction(title: okTitle, style: .default, handler: { (action) in
+                self.searchBarTextClear()
                 self.showHideSearchBar()
             })
-            showNetworkingAlert(withAction: alertAction)
+            showNetworkingAlert(withAction: alertAction, completion: {
+                self.moviesTableView.reloadData()
+                self.searchMovies(text: text, page: page)
+            })
         }
         
     }
@@ -219,6 +231,10 @@ class MoviesViewController: BaseViewController, UITableViewDelegate , UITableVie
     }
     
     //MARK: - Customize UI
+    
+    private func searchBarTextClear() {
+        searchBar.text = ""
+    }
     
     private func scrollTableViewToTop() {
         let source = isSearchingNow ? searchResults : dataSource

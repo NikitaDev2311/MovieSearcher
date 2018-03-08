@@ -37,6 +37,7 @@ let noDate = "No date"
 let noTrailer = "No trailer"
 let noDescription = "No description"
 let unknownCountry = "Unknown country"
+let settingsTitle = "Settings"
 let noMovieDurationValue = 0
 
 //MARK: - Strings

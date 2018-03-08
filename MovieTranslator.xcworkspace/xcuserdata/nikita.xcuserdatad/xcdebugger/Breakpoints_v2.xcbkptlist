@@ -38,11 +38,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MovieTranslator/ViewControllers/MoviesViewController/MoviesViewController.swift"
-            timestampString = "542135736.804292"
+            timestampString = "542196460.83999"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "43"
@@ -57,46 +57,30 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MovieTranslator/ViewControllers/MoviesViewController/MoviesViewController.swift"
-            timestampString = "542135736.8047481"
+            filePath = "MovieTranslator/Extensions/UIViewController/UIViewControllerExtension.swift"
+            timestampString = "542196460.840343"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "207"
-            endingLineNumber = "207"
-            landmarkName = "searchMovies(text:page:)"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "openDeviseSettings()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "MovieTranslator.MoviesViewController.searchMovies(text: Swift.String, page: Swift.Int) -&gt; ()"
-                  moduleName = "MovieTranslator"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/nikita/Desktop/Projects/MovieTranslator/MovieTranslator/ViewControllers/MoviesViewController/MoviesViewController.swift"
-                  timestampString = "542131344.099386"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "156"
-                  endingLineNumber = "156"
-                  offsetFromSymbolStart = "92">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;Any&gt;&gt;, Swift.Optional&lt;Swift.String&gt;) -&gt; () in MovieTranslator.MoviesViewController.searchMovies(text: Swift.String, page: Swift.Int) -&gt; ()"
-                  moduleName = "MovieTranslator"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/nikita/Desktop/Projects/MovieTranslator/MovieTranslator/ViewControllers/MoviesViewController/MoviesViewController.swift"
-                  timestampString = "542131344.101227"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "156"
-                  endingLineNumber = "156"
-                  offsetFromSymbolStart = "48">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MovieTranslator/ViewControllers/MoviesViewController/MoviesViewController.swift"
+            timestampString = "542196460.840397"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "328"
+            endingLineNumber = "328"
+            landmarkName = "scrollViewDidScroll(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
