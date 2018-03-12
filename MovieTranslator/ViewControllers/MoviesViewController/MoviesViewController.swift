@@ -40,24 +40,31 @@ class MoviesViewController: BaseViewController, UITableViewDelegate , UITableVie
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        if (navigationController?.isNavigationBarHidden)! {
-            searchBar.isHidden = false
-            hideKeyboard()
+        
+        guard let navigationBar = navigationController?.navigationBar else {return}
+        let navigationBarIsVisible = !navigationBar.isHidden
+        if navigationBarIsVisible {
+            hideSearchBar()
         }
+//        if (navigationController?.isNavigationBarHidden)! {
+//            searchBar.isHidden = false
+//            hideKeyboard()
+//        }
     }
     
     
     //MARK: - Actions
     
     @IBAction func showSearchBar(_ sender: Any) {
-        showHideSearchBar()
+//        showHideSearchBar()
+        showSearchBar()
     }
     
     @IBAction func backToPopularMovies(_ sender: Any) {
         searchBarTextClear()
-        moviesTableView.reloadData()
-        scrollTableViewToTop()
+//        moviesTableView.reloadData()
         getPopularMovies(page: defaultMoviePage)
+//        scrollTableViewToTop()
     }
     
     //MARK: - UITableViewDelegate & UITableViewDataSource
@@ -142,6 +149,14 @@ class MoviesViewController: BaseViewController, UITableViewDelegate , UITableVie
                 weakSelf?.hideBackButton()
                 weakSelf?.setNavigationBarTitleIfNeed()
                 weakSelf?.isLoadingNow = false
+                
+                let isFirstSearch = UserDefaults.standard.bool(forKey: UserDefaultsKeys.isFirstGet.rawValue)
+                if !isFirstSearch {
+                    if (weakSelf?.dataSource.count)! > 0 {
+                        weakSelf?.scrollTableViewToTop()
+                    }
+                }
+                UserDefaults.standard.set(true, forKey: UserDefaultsKeys.isFirstGet.rawValue)
             }
         } else {
             hideLoading()
@@ -209,7 +224,8 @@ class MoviesViewController: BaseViewController, UITableViewDelegate , UITableVie
             hideLoading()
             let alertAction = UIAlertAction(title: okTitle, style: .default, handler: { (action) in
                 self.searchBarTextClear()
-                self.showHideSearchBar()
+                self.hideSearchBar()
+//                self.showHideSearchBar()
             })
             showNetworkingAlert(withAction: alertAction, completion: {
                 self.moviesTableView.reloadData()
@@ -225,7 +241,8 @@ class MoviesViewController: BaseViewController, UITableViewDelegate , UITableVie
             searchMovies(text: text, page: moviesPage)
         } else {
             scrollTableViewToTop()
-            showHideSearchBar()
+//            showHideSearchBar()
+            hideSearchBar()
             getPopularMovies(page: defaultMoviePage)
         }
     }
@@ -247,20 +264,34 @@ class MoviesViewController: BaseViewController, UITableViewDelegate , UITableVie
         title = isSearchingNow ? searchResultsNavigationBarTitle :  popularMoviesNavigationBarTitle
     }
     
-    
-    private func showHideSearchBar() {
-        searchBar.isHidden = !searchBar.isHidden
-
-        if searchBar.isHidden {
-            navigationController?.setNavigationBarHidden(false, animated: true)
-            hideKeyboard()
-            showSearchButton()
-        } else {
-            searchBar.becomeFirstResponder()
-            navigationController?.setNavigationBarHidden(true, animated: true)
-            hideSearchButton()
-        }
+    private func hideSearchBar() {
+        searchBar.hide()
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        hideKeyboard()
+        showSearchButton()
     }
+    
+    private func showSearchBar() {
+        searchBar.show()
+        navigationController?.setNavigationBarHidden(true, animated: true)
+        searchBar.becomeFirstResponder()
+        hideSearchButton()
+    }
+    
+    
+//    private func showHideSearchBar() {
+//        searchBar.isHidden = !searchBar.isHidden
+//
+//        if searchBar.isHidden {
+//            navigationController?.setNavigationBarHidden(false, animated: true)
+//            hideKeyboard()
+//            showSearchButton()
+//        } else {
+//            navigationController?.setNavigationBarHidden(true, animated: true)
+//            searchBar.becomeFirstResponder()
+//            hideSearchButton()
+//        }
+//    }
     
     func hideKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
@@ -312,6 +343,7 @@ class MoviesViewController: BaseViewController, UITableViewDelegate , UITableVie
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         guard let text = searchBar.text else {return}
         searchTerms = text
+        UserDefaults.standard.set(false, forKey: UserDefaultsKeys.isFirstGet.rawValue)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -319,7 +351,8 @@ class MoviesViewController: BaseViewController, UITableViewDelegate , UITableVie
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        showHideSearchBar()
+//        showHideSearchBar()
+        hideSearchBar()
     }
     
     //MARK: - UIScrollViewDelegate

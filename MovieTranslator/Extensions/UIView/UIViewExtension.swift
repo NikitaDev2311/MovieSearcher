@@ -13,4 +13,13 @@ extension UIView {
     func frameBottom() -> CGFloat {
         return self.frame.origin.y + self.frame.size.height
     }
+    
+    func hide() {
+        self.isHidden = true
+    }
+    
+    func show() {
+        self.isHidden = false
+    }
+    
 }

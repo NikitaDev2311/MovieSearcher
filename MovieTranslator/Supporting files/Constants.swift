@@ -12,6 +12,7 @@ import UIKit
 //MARK: - UserDefaults Constants
 enum UserDefaultsKeys : String {
     case isFirstSearch = "isFirstSearch"
+    case isFirstGet = "isFirstGet"
 }
 
 //MARK: - UI Constants
