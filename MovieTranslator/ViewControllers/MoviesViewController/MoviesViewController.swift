@@ -40,16 +40,11 @@ class MoviesViewController: BaseViewController, UITableViewDelegate , UITableVie
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
         guard let navigationBar = navigationController?.navigationBar else {return}
         let navigationBarIsVisible = !navigationBar.isHidden
         if navigationBarIsVisible {
             hideSearchBar()
         }
-//        if (navigationController?.isNavigationBarHidden)! {
-//            searchBar.isHidden = false
-//            hideKeyboard()
-//        }
     }
     
     
@@ -225,7 +220,6 @@ class MoviesViewController: BaseViewController, UITableViewDelegate , UITableVie
             let alertAction = UIAlertAction(title: okTitle, style: .default, handler: { (action) in
                 self.searchBarTextClear()
                 self.hideSearchBar()
-//                self.showHideSearchBar()
             })
             showNetworkingAlert(withAction: alertAction, completion: {
                 self.moviesTableView.reloadData()
@@ -241,7 +235,6 @@ class MoviesViewController: BaseViewController, UITableViewDelegate , UITableVie
             searchMovies(text: text, page: moviesPage)
         } else {
             scrollTableViewToTop()
-//            showHideSearchBar()
             hideSearchBar()
             getPopularMovies(page: defaultMoviePage)
         }
@@ -277,21 +270,6 @@ class MoviesViewController: BaseViewController, UITableViewDelegate , UITableVie
         searchBar.becomeFirstResponder()
         hideSearchButton()
     }
-    
-    
-//    private func showHideSearchBar() {
-//        searchBar.isHidden = !searchBar.isHidden
-//
-//        if searchBar.isHidden {
-//            navigationController?.setNavigationBarHidden(false, animated: true)
-//            hideKeyboard()
-//            showSearchButton()
-//        } else {
-//            navigationController?.setNavigationBarHidden(true, animated: true)
-//            searchBar.becomeFirstResponder()
-//            hideSearchButton()
-//        }
-//    }
     
     func hideKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
@@ -351,7 +329,6 @@ class MoviesViewController: BaseViewController, UITableViewDelegate , UITableVie
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-//        showHideSearchBar()
         hideSearchBar()
     }
     

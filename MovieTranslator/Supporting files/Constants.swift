@@ -37,6 +37,8 @@ let errorTitle = "Error"
 let noTitle = "No title"
 let noDate = "No date"
 let noTrailer = "No trailer"
+let noGenre = "No genre"
+let noDuration = "No duration"
 let noDescription = "No description"
 let unknownCountry = "Unknown country"
 let settingsTitle = "Settings"
@@ -51,6 +53,7 @@ let networkMessage = "Your device does not connected to network!"
 let defaultMoviePage = 1
 let onePageMoviesCount = 20
 let searchTimerInterval = 1.0
+let countMinutesInHour = 60
 
 
 

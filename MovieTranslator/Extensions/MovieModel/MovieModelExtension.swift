@@ -13,7 +13,7 @@ extension MovieModel {
     static func setGenre(ofMovie movie: MovieModel, toLabel label: UILabel) {
         guard let movieGenres = movie.genres else { return }
         let genreString = (movieGenres as NSArray).componentsJoined(by: ",")
-        label.text = genreString.count < 1 ?  "No genre" : genreString
+        label.text = genreString.count < 1 ?  noGenre : genreString
     }
     
     static func setGenres(genres: [GenreModel], forMovie movie: MovieModel) {
@@ -28,11 +28,10 @@ extension MovieModel {
     
     static func getString(ofMovieDuration duration: Int) -> String {
         var durationString = ""
-        let countMinutesInHour = 60
         let hoursCount = duration/countMinutesInHour
         let minutesCount = duration - hoursCount*countMinutesInHour
         if duration == 0 {
-            durationString = "No duration"
+            durationString = noDuration
         } else {
             if duration > countMinutesInHour {
                 if hoursCount < 2 {
