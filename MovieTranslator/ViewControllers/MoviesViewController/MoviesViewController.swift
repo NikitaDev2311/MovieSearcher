@@ -51,15 +51,12 @@ class MoviesViewController: BaseViewController, UITableViewDelegate , UITableVie
     //MARK: - Actions
     
     @IBAction func showSearchBar(_ sender: Any) {
-//        showHideSearchBar()
         showSearchBar()
     }
     
     @IBAction func backToPopularMovies(_ sender: Any) {
         searchBarTextClear()
-//        moviesTableView.reloadData()
         getPopularMovies(page: defaultMoviePage)
-//        scrollTableViewToTop()
     }
     
     //MARK: - UITableViewDelegate & UITableViewDataSource

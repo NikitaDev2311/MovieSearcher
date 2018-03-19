@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MovieTranslator/ViewControllers/MoviesViewController/MoviesViewController.swift"
-            timestampString = "542542744.178308"
+            timestampString = "543161021.806445"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "376"
-            endingLineNumber = "376">
+            startingLineNumber = "353"
+            endingLineNumber = "353">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -88,7 +88,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MovieTranslator/ViewControllers/MoviesViewController/MoviesViewController.swift"
-            timestampString = "542542744.178858"
+            timestampString = "543161021.8067811"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "162"
@@ -104,7 +104,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MovieTranslator/ViewControllers/MoviesViewController/MoviesViewController.swift"
-            timestampString = "542542744.179058"
+            timestampString = "543161021.807152"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "224"
@@ -120,12 +120,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MovieTranslator/ViewControllers/MoviesViewController/MoviesViewController.swift"
-            timestampString = "542542744.179255"
+            timestampString = "543161021.807452"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "316"
             endingLineNumber = "316"
-            landmarkName = "showSearchButton()"
+            landmarkName = "searchBar(_:shouldChangeTextIn:replacementText:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -136,12 +136,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MovieTranslator/ViewControllers/MoviesViewController/MoviesViewController.swift"
-            timestampString = "542542744.179467"
+            timestampString = "543161021.807784"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "311"
             endingLineNumber = "311"
-            landmarkName = "hideSearchButton()"
+            landmarkName = "searchBar(_:shouldChangeTextIn:replacementText:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
